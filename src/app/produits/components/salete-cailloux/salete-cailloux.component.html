@@ -1,0 +1,60 @@
+<!-- terrains-details.component.html -->
+<section class="page-section bg-light" id="terrains">
+    <div class="container">
+      <div class="text-center">
+        <h2 class="section-heading text-uppercase">Terrains</h2>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 col-sm-6 mb-4" *ngFor="let terrain of datas">
+          <!-- Portfolio item 1 -->
+          <div class="portfolio-item">
+            <a class="portfolio-link" data-bs-toggle="modal" (click)="showTerrainDetails(terrain)" href="#terrainDetailsModal">
+              <div class="portfolio-hover">
+                <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+              </div>
+              <img class="img-fluid" [src]="terrain.imageUrl" alt="{{ terrain.adresse }}" />
+            </a>
+            <div class="portfolio-caption">
+              <div class="portfolio-caption-heading">{{ terrain.adresse }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Modal -->
+    <div class="modal fade" id="terrainDetailsModal" tabindex="-1" role="dialog" aria-labelledby="terrainDetailsModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="terrainDetailsModalLabel">{{ selectedTerrain?.adresse || 'Détails Terrain' }}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-lg-6">
+                  <!-- Image du terrain -->
+                  <img class="img-fluid" [src]="selectedTerrain?.imageUrl" alt="{{ selectedTerrain?.adresse }}" />
+                </div>
+                <div class="col-lg-6">
+                  <!-- Informations du terrain -->
+                  <p><strong>Adresse:</strong> {{ selectedTerrain?.adresse }}</p>
+                  <p><strong>Contact:</strong> {{ selectedTerrain?.contact }}
+                    <a class="btn btn-dark btn-social mx-2" href="tel:{{ selectedTerrain?.contact }}"><i class="fas fa-phone"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="https://wa.me/{{ selectedTerrain?.contact }}" ><i class="fab fa-whatsapp"></i></a></p>
+                  <p><strong>Prix:</strong> {{ selectedTerrain?.prix | currency:'MRU':'symbol':'1.2-2' }}</p>
+                  <p><strong>Superficie:</strong> {{ selectedTerrain?.superficie }} m²</p>
+                  <!-- Ajoutez d'autres informations selon vos besoins -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  

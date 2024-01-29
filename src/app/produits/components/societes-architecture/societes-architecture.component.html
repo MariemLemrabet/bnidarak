@@ -1,0 +1,59 @@
+<!-- societes-details.component.html -->
+<section class="page-section bg-light" id="societes">
+    <div class="container">
+      <div class="text-center">
+        <h2 class="section-heading text-uppercase">Sociétés</h2>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 col-sm-6 mb-4" *ngFor="let societe of datas">
+          <!-- Portfolio item 1 -->
+          <div class="portfolio-item">
+            <a class="portfolio-link" data-bs-toggle="modal" (click)="showsociteDetails(societe)" href="#societeDetailsModal">
+              <div class="portfolio-hover">
+                <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+              </div>
+              <img class="img-fluid" [src]="societe.imageUrl" alt="{{ societe.nom }}" />
+            </a>
+            <div class="portfolio-caption">
+              <div class="portfolio-caption-heading">{{ societe.nom }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Modal -->
+    <div class="modal fade" id="societeDetailsModal" tabindex="-1" role="dialog" aria-labelledby="societeDetailsModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="societeDetailsModalLabel">{{ selectedSociete?.nom || 'Détails Société' }}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-lg-6">
+                  <!-- Image de la société -->
+                  <img class="img-fluid" [src]="selectedSociete?.imageUrl" alt="{{ selectedSociete?.nom }}" />
+                </div>
+                <div class="col-lg-6">
+                  <!-- Informations de la société -->
+                  <p><strong>Adresse:</strong> {{ selectedSociete?.adresse }}</p>
+                  <p><strong>Contact:</strong> {{ selectedSociete?.contact }}
+                    <a class="btn btn-dark btn-social mx-2" href="tel:{{ selectedSociete?.contact }}"><i class="fas fa-phone"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="https://wa.me/{{ selectedSociete?.contact }}" ><i class="fab fa-whatsapp"></i></a></p>
+
+                  <!-- Ajoutez d'autres informations selon vos besoins -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  

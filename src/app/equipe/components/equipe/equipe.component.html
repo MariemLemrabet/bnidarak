@@ -1,0 +1,20 @@
+<!--equipe-->
+<section class="page-section bg-light" id="team">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="section-heading text-uppercase">Équipe</h2>
+    </div>
+    <div class="row">
+      <div class="col-lg-4" *ngFor="let data of datas">
+        <div class="team-member">
+          <img class="mx-auto rounded-circle" [src]="data.imageUrl" alt="..." />
+          <h4>{{ data.nom }} {{ data.prenom }}</h4>
+          <p class="text-muted">{{ data.typeTravail }}</p>
+          <a class="btn btn-dark btn-social mx-2" href="tel:{{ data.contact }}" [attr.aria-label]="'Appeler ' + data.prenom + ' ' + data.nom"><i class="fas fa-phone"></i></a>
+          <a class="btn btn-dark btn-social mx-2" href="https://wa.me/{{ data.contact }}" [attr.aria-label]="'Chat WhatsApp avec ' + data.prenom + ' ' + data.nom"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+   
+  </div>
+</section>
